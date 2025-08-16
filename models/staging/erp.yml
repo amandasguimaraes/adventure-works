@@ -1,0 +1,164 @@
+sources:
+  - name: erp
+    database: fea25_05
+    schema: raw_adventure_works
+    tables:
+      - name: salesorderheader
+        description: Sales order header information, including order and shipment dates, and foreign keys to customers, credit cards, addresses, and order details.
+        columns:
+          - name: salesorderid
+            description: Primary key of the SalesOrderHeader table.
+            tests:
+              - unique
+              - not_null
+          - name: creditcardid
+            description: Foreign key linking to the CreditCard table.
+            tests:
+              - not_null
+          - name: customerid
+            description: Foreign key linking to the Customer table.
+            tests:
+              - not_null 
+          - name: shiptoaddressid
+            description: Foreign key linking to the Address table.
+            tests:
+              - not_null 
+
+      - name: salesorderdetail
+        description: Sales order line items, including product, quantity, unit price, discount, and related keys.
+        columns:
+          - name: salesorderid
+            description: Foreign key linking to the SalesOrderHeader table.
+            tests:
+              - not_null
+          - name: productid
+            description: Foreign key linking to the Product table.
+            tests:
+              - not_null
+
+      - name: salesorderheadersalesreason
+        description: Bridge table between sales orders and sales reasons.
+        columns:
+          - name: salesreasonid 
+            description: Foreign key linking to the SalesReason table.
+            tests:
+              - not_null
+          - name: salesorderid
+            description: Foreign key linking to the SalesOrderHeader table.
+            tests:
+              - not_null
+        
+      - name: salesreason
+        description: Reasons for a sale.
+        columns:
+          - name: salesreasonid 
+            description: Primary key of the SalesReason table.
+            tests:
+              - not_null
+              - unique
+        
+      - name: creditcard
+        description: Credit card details including type, number, and expiration date.
+        columns:
+          - name: creditcardid
+            description: Primary key of the CreditCard table.
+            tests:
+              - unique
+              - not_null
+        
+      - name: product
+        description: Product details including attributes and identifiers.
+        columns:
+          - name: productid
+            description: Primary key of the Product table.
+            tests:
+              - unique
+              - not_null
+          - name: productsubcategoryid
+            description: Foreign key linking to the ProductSubCategory table.
+            tests:
+              - not_null
+
+      - name: productcategory
+        description: High-level product categories.
+        columns:
+          - name: productcategoryid
+            description: Primary key of the ProductCategory table.
+            tests:
+              - unique
+              - not_null
+      
+      - name: productsubcategory
+        description: Subcategories of products, linked to categories.
+        columns:
+          - name: productsubcategoryid
+            description: Primary key of the ProductSubcategory table.
+            tests:
+              - unique
+              - not_null
+          - name: productcategoryid
+            description: Foreign key linking to the ProductCategory table.
+            tests:
+              - not_null
+        
+      - name: address
+        description: Sales addresses including street and city information.
+        columns:
+          - name: addressid
+            description: Primary key of the Address table.
+            tests:
+              - unique
+              - not_null
+          - name: stateprovinceid
+            description: Foreign key linking to the StateProvince table.
+            tests:
+              - not_null
+        
+      - name: stateprovince
+        description: States or provinces with their respective codes and country reference.
+        columns:
+          - name: stateprovinceid
+            description: Primary key of the StateProvince table.
+            tests:
+              - unique
+              - not_null
+          - name: countryregioncode
+            description: Foreign key linking to the CountryRegion table.
+            tests:
+              - not_null
+        
+      - name: countryregion
+        description: Country names and codes.
+        columns:
+          - name: countryregioncode
+            description: Primary key of the CountryRegion table.
+            tests:
+              - unique
+              - not_null
+        
+      - name: customer
+        description: Customer identifiers and references to person or store.
+        columns:
+          - name: customerid
+            description: Primary key of the Customer table.
+            tests:
+              - unique
+              - not_null
+        
+      - name: person
+        description: Person-level customer details including first and last name.
+        columns:
+          - name: businessentityid
+            description: Primary key of the Person table. Links to Customer via personid.
+            tests:
+              - unique
+              - not_null
+        
+      - name: store
+        description: Store-level customer details including store name.
+        columns:
+          - name: businessentityid
+            description: Primary key of the Store table. Links to Customer via storeid.
+            tests:
+              - unique
+              - not_null
