@@ -1,5 +1,5 @@
 with
-    source_source_sales_order_header_sales_reason as (
+    source_sales_order_header_sales_reason as (
         select *            
         from {{ source('erp','salesorderheadersalesreason') }}
     )
