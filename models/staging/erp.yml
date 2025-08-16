@@ -165,3 +165,11 @@ sources:
       
       - name: date
         description: Model for order dates generated with dbt_date.
+
+      - name: salesterritory
+        description: Information about sales territories.
+        columns:
+          - name: territoryid
+            tests:
+              - unique
+              - not_null 

@@ -1,0 +1,36 @@
+models:
+  - name: int_territory__enriched
+    description: Intermediate table to enriches territory data with countries, provinces and addresses.
+    columns:
+      - name: address_id
+        description: Unique identifier for each address record.
+        tests: 
+          - unique
+          - not_null
+
+      - name: state_province_id
+        description: Foreign key for the state/province. 
+        
+      - name: country_region_code
+        description: Foreign key for the country/region.
+
+      - name: territory_id
+        description: Foreign key for the territory.
+
+      - name: address_line
+        description: First line of the address.
+
+      - name: city
+        description: Name of the city.
+      
+      - name: province_name
+        description: Name of the state/province.
+
+      - name: country_region_name
+        description: Name of the country/region.
+      
+      - name: territory_name
+        description: Name of the territory.
+
+      - name: continent
+        description: Name of the continent.
