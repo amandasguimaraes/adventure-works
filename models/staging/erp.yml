@@ -162,3 +162,6 @@ sources:
             tests:
               - unique
               - not_null
+      
+      - name: date
+        description: Model for order dates generated with dbt_date.
