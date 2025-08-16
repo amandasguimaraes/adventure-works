@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_sales_order
+    description: Fact table with sales data and metrics.
+    columns:
+      - name: sk_sales_order
+        description: Generated surrogate key combining salesorderid and salesorderdetailid.
+
+      - name: fk_date
+        description: Foreign key that references the date dimension.
+        
+      - name: fk_product
+        description: Foreign key that references the product dimension.
+        
+      - name: fk_customer
+        description: Foreign key that references the customer dimension.
+        
+      - name: fk_credit_card
+        description: Foreign key that references the credit card dimension.
+        
+      - name: fk_territory
+        description: Foreign key that references the territory dimension.
+        
+      - name: fk_reason
+        description: Foreign key references the reason dimension.
