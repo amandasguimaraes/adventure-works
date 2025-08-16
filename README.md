@@ -1,15 +1,31 @@
-Welcome to your new dbt project!
+# Adventure Works
 
-### Using the starter project
+This repository contains the solution developed for the Analytics Engineering Certification by Indicium.
 
-Try running the following commands:
-- dbt run
-- dbt test
+---
 
+## Context
+Adventure Works (AW), a fast-growing bicycle manufacturer, set out to use data as a strategic asset to sustain growth and strengthen its competitive edge.
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+To ensure trust, the CEO required analytics outputs to match audited financial results. This project thus became more than a technical challenge, it was a strategic proof of how modern analytics can drive smarter business decisions.
+
+---
+
+## Objective  
+
+This project was developed to create a scalable and reliable analytics platform for Adventure Works (AW). The work focused on:
+
+- Implementing a Modern Analytics Stack (MAS) to enable a data-driven culture.
+- Transforming transactional data (OLTP) into analytical structures (OLAP) using dimensional modeling.
+- Showcasing technical expertise with SQL, dbt, and BI tools for interactive dashboards and reports.
+- Ensuring data quality and consistency, applying automated and business-oriented validation tests to meet strategic questions from AW leadership.
+
+---
+
+## Tech Stack
+
+- **SQL** → Querying and validation  
+- **dbt** → Transformation, modeling, testing, and documentation  
+- **Snowflake** → Data Warehouse  
+- **Power BI** → Interactive dashboards and visualization  
+- **GitHub** → Version control
