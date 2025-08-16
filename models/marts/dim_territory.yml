@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_territory
+    description: Dimension table contains information on territories..
+    columns:
+      - name: sk_territory
+        description: Generated surrogate key combining addressid, addressline1 and city.
+        tests: 
+          - unique
+          - not_null
+      - name: address_id
+        description: Unique identifier for each address record.
+        tests: 
+          - unique
+          - not_null
+
+      - name: state_province_id
+        description: Foreign key for the state/province. 
+        
+      - name: country_region_code
+        description: Foreign key for the country/region.
+
+      - name: territory_id
+        description: Foreign key for the territory.
+
+      - name: address_line
+        description: First line of the address.
+
+      - name: city
+        description: Name of the city.
+      
+      - name: province_name
+        description: Name of the state/province.
+
+      - name: country_region_name
+        description: Name of the country/region.
+      
+      - name: territory_name
+        description: Name of the territory.
+
+      - name: continent
+        description: Name of the continent.
