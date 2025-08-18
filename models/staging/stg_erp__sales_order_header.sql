@@ -22,7 +22,7 @@ with
                 when online_order = true then 'Online'
                 when online_order = false then 'Physical'
             end as sales_type
-            , cast(subtotal numeric(18,4)) as sub_total  
+            , cast(subtotal as numeric(18,4)) as sub_total  
             , cast(taxamt as numeric) as tax 
             , cast(freight as numeric) as freight  
             , cast(totaldue as numeric) as total_due
