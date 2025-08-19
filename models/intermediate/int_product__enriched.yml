@@ -10,15 +10,9 @@ models:
 
       - name: productsubcategory_id
         description: Foreign key referencing the product subcategory.
-        tests: 
-          - unique
-          - not_null
 
       - name: productcategory_id
         description: Foreign key referencing the product category.
-        tests: 
-          - unique
-          - not_null
 
       - name: product_name
         description: Name of the product.

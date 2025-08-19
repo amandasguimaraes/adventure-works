@@ -5,7 +5,7 @@ with
     )
     , renamed as (
         select
-            cast(businessentityid as int) as business_entity_id
+            cast(businessentityid as int) as person_id
             , cast(persontype as string) as person_type
             , cast(firstname as string) as first_name
             , cast(middlename as string) as middle_name

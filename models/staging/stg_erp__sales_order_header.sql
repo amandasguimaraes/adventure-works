@@ -8,6 +8,7 @@ with
             cast(salesorderid as int) as sales_order_id		
             , cast(customerid as int) as customer_id
             , cast(creditcardid as int) as credit_card_id
+            , cast(territoryid as int) as territory_id
             , cast(shiptoaddressid as int) as ship_to_address_id
             , case
                 when cast(status as int) = 1 then 'in_process'
