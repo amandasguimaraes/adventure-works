@@ -1,7 +1,7 @@
 with
     source_credit_card as (
         select *            
-        from {{ source('erp','creditcard') }}
+        from {{ source('erp','sales_creditcard') }}
     )
     , renamed as (
         select

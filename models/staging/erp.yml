@@ -3,7 +3,7 @@ sources:
     database: fea25_05
     schema: raw_adventure_works
     tables:
-      - name: salesorderheader
+      - name: sales_salesorderheader
         description: Sales order header information, including order and shipment dates, and foreign keys to customers, credit cards, addresses, and order details.
         columns:
           - name: salesorderid
@@ -24,7 +24,7 @@ sources:
             tests:
               - not_null 
 
-      - name: salesorderdetail
+      - name: sales_salesorderdetail
         description: Sales order line items, including product, quantity, unit price, discount, and related keys.
         columns:
           - name: salesorderid
@@ -36,7 +36,7 @@ sources:
             tests:
               - not_null
 
-      - name: salesorderheadersalesreason
+      - name: sales_salesorderheadersalesreason
         description: Bridge table between sales orders and sales reasons.
         columns:
           - name: salesreasonid 
@@ -48,7 +48,7 @@ sources:
             tests:
               - not_null
         
-      - name: salesreason
+      - name: sales_salesreason
         description: Reasons for a sale.
         columns:
           - name: salesreasonid 
@@ -57,7 +57,7 @@ sources:
               - not_null
               - unique
         
-      - name: creditcard
+      - name: sales_creditcard
         description: Credit card details including type, number, and expiration date.
         columns:
           - name: creditcardid
@@ -66,7 +66,7 @@ sources:
               - unique
               - not_null
         
-      - name: product
+      - name: production_product
         description: Product details including attributes and identifiers.
         columns:
           - name: productid
@@ -79,7 +79,7 @@ sources:
             tests:
               - not_null
 
-      - name: productcategory
+      - name: production_productcategory
         description: High-level product categories.
         columns:
           - name: productcategoryid
@@ -88,7 +88,7 @@ sources:
               - unique
               - not_null
       
-      - name: productsubcategory
+      - name: production_productsubcategory
         description: Subcategories of products, linked to categories.
         columns:
           - name: productsubcategoryid
@@ -101,7 +101,7 @@ sources:
             tests:
               - not_null
         
-      - name: address
+      - name: person_address
         description: Sales addresses including street and city information.
         columns:
           - name: addressid
@@ -114,7 +114,7 @@ sources:
             tests:
               - not_null
         
-      - name: stateprovince
+      - name: person_stateprovince
         description: States or provinces with their respective codes and country reference.
         columns:
           - name: stateprovinceid
@@ -127,7 +127,7 @@ sources:
             tests:
               - not_null
         
-      - name: countryregion
+      - name: person_countryregion
         description: Country names and codes.
         columns:
           - name: countryregioncode
@@ -135,17 +135,8 @@ sources:
             tests:
               - unique
               - not_null
-        
-      - name: customer
-        description: Customer identifiers and references to person or store.
-        columns:
-          - name: customerid
-            description: Primary key of the Customer table.
-            tests:
-              - unique
-              - not_null
-        
-      - name: person
+
+      - name: person_person
         description: Person-level customer details including first and last name.
         columns:
           - name: businessentityid
@@ -154,7 +145,16 @@ sources:
               - unique
               - not_null
         
-      - name: store
+      - name: sales_customer
+        description: Customer identifiers and references to person or store.
+        columns:
+          - name: customerid
+            description: Primary key of the Customer table.
+            tests:
+              - unique
+              - not_null
+        
+      - name: sales_store
         description: Store-level customer details including store name.
         columns:
           - name: businessentityid
@@ -166,7 +166,7 @@ sources:
       - name: date
         description: Model for order dates generated with dbt_date.
 
-      - name: salesterritory
+      - name: sales_salesterritory
         description: Information about sales territories.
         columns:
           - name: territoryid
