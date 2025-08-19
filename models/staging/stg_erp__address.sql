@@ -1,7 +1,7 @@
 with
     source_address as (
         select *            
-        from {{ source('erp','address') }}
+        from {{ source('erp','person_address') }}
     )
     , renamed as (
         select
