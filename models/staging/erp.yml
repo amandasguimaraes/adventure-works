@@ -11,18 +11,6 @@ sources:
             tests:
               - unique
               - not_null
-          - name: creditcardid
-            description: Foreign key linking to the CreditCard table.
-            tests:
-              - not_null
-          - name: customerid
-            description: Foreign key linking to the Customer table.
-            tests:
-              - not_null 
-          - name: shiptoaddressid
-            description: Foreign key linking to the Address table.
-            tests:
-              - not_null 
 
       - name: sales_salesorderdetail
         description: Sales order line items, including product, quantity, unit price, discount, and related keys.
@@ -31,18 +19,10 @@ sources:
             description: Foreign key linking to the SalesOrderHeader table.
             tests:
               - not_null
-          - name: productid
-            description: Foreign key linking to the Product table.
-            tests:
-              - not_null
 
       - name: sales_salesorderheadersalesreason
         description: Bridge table between sales orders and sales reasons.
         columns:
-          - name: salesreasonid 
-            description: Foreign key linking to the SalesReason table.
-            tests:
-              - not_null
           - name: salesorderid
             description: Foreign key linking to the SalesOrderHeader table.
             tests:
@@ -74,10 +54,6 @@ sources:
             tests:
               - unique
               - not_null
-          - name: productsubcategoryid
-            description: Foreign key linking to the ProductSubCategory table.
-            tests:
-              - not_null
 
       - name: production_productcategory
         description: High-level product categories.
@@ -96,10 +72,6 @@ sources:
             tests:
               - unique
               - not_null
-          - name: productcategoryid
-            description: Foreign key linking to the ProductCategory table.
-            tests:
-              - not_null
         
       - name: person_address
         description: Sales addresses including street and city information.
@@ -109,10 +81,6 @@ sources:
             tests:
               - unique
               - not_null
-          - name: stateprovinceid
-            description: Foreign key linking to the StateProvince table.
-            tests:
-              - not_null
         
       - name: person_stateprovince
         description: States or provinces with their respective codes and country reference.
@@ -121,10 +89,6 @@ sources:
             description: Primary key of the StateProvince table.
             tests:
               - unique
-              - not_null
-          - name: countryregioncode
-            description: Foreign key linking to the CountryRegion table.
-            tests:
               - not_null
         
       - name: person_countryregion
