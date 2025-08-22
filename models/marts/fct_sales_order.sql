@@ -37,6 +37,8 @@ with
             , d1.sk_date as sk_order_date
             , d2.sk_date as sk_ship_date
             , d3.sk_date as sk_due_date
+            , int_sales.sales_order_id
+            , int_sales.sales_order_detail_id
             , int_sales.order_status
             , int_sales.online_order
             , int_sales.freight
