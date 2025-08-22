@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: dim_customer
-    description: Dimension table contains information on customers by AW.
+    description: Dimension table containing data about customers, including person and store.
     columns:
       - name: sk_customer
-        description: Generated surrogate key combining customerid and businessentityid.
+        description: Surrogate key uniquely generated identifying each customers record.
         tests: 
           - unique
           - not_null
@@ -17,25 +17,25 @@ models:
           - not_null
 
       - name: person_id
-        description: Foreign key referencing the person.
+        description: Unique identifier for each person.
 
       - name: store_id
-        description: Foreign key referencing the store.
+        description: Unique identifier for each store.
 
       - name: territory_id
-        description: Foreign key referencing the territory.
+        description: Unique identifier for each territory.
 
       - name: person_type
-        description: Type of the person.
+        description: Type of person indicating whether it is a store or a person.
 
       - name: full_name
-        description: Full name of the person.
+        description: Full name of the customer's person.
 
       - name: store_name
-        description: Name of the store.
+        description: Name of the customer's store.
       
       - name: customer_type
-        description: Type of the customer.
+        description: Type of customer based on presence of person and store.
 
       - name: customer_category
-        description: Category of the customer.
+        description: Category of customer derived from associated store and person.

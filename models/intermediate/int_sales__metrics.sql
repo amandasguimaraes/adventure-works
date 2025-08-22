@@ -12,6 +12,7 @@ with
     , joined_order_detail as (
         select
             sales_order_detail.sales_order_id
+            , sales_order_detail.sales_order_detail_id
             , sales_order_detail.product_id
             , sales_order_detail.order_quantity
             , sales_order_detail.unit_price
@@ -44,8 +45,9 @@ with
     )
     , metrics as (
         select
-            {{ dbt_utils.generate_surrogate_key(['joined_order_detail.sales_order_id']) }} as sk_sales_order
+            {{ dbt_utils.generate_surrogate_key(['joined_order_detail.sales_order_id', 'joined_order_detail.sales_order_detail_id']) }} as sk_sales_order
             , joined_order_detail.sales_order_id
+            , joined_order_detail.sales_order_detail_id
             , joined_order_detail.product_id
             , joined_order_detail.order_quantity
             , joined_order_detail.unit_price
@@ -67,7 +69,7 @@ with
             , joined_order_header.ship_date
             , joined_order_header.due_date
         from joined_order_detail
-        left join joined_order_header 
+        inner join joined_order_header 
             on joined_order_detail.sales_order_id = joined_order_header.sales_order_id
     )
 

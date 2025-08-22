@@ -1,9 +1,9 @@
 models:
   - name: int_product__enriched
-    description: Intermediate table to enriches product data with categories and subcategories.
+    description: Intermediate table that enriches product data with categories and subcategories.
     columns:
       - name: product_id
-        description: Unique identifier for each product.
+        description: Primary key identifier for each product.
         tests: 
           - unique
           - not_null
@@ -24,13 +24,13 @@ models:
         description: Name of the product subcategory.
 
       - name: product_number
-        description: Unique alphanumeric product identifier.
+        description: Unique alphanumeric identifier for the product.
         tests: 
           - unique
           - not_null
           
       - name: standard_cost
-        description: Standard cost associated with the product.
+        description: Cost to produce or procure the product.
 
       - name: list_price
-        description: List price of the product.
+        description: Suggested retail price of the product.
