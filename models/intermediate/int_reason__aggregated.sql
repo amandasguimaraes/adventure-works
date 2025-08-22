@@ -12,7 +12,7 @@ with
     , joined as (
         select
             sales_order_header_sales_reason.sales_order_id
-            , coalesce(listagg(sales_reason.reason_name, ', '), 'Not informed') as sales_reason_agg
+            , listagg(sales_reason.reason_name, ', ') within group (order by sales_reason.reason_name) as reasons
         from sales_order_header_sales_reason
         left join sales_reason 
             on sales_order_header_sales_reason.sales_reason_id = sales_reason.sales_reason_id

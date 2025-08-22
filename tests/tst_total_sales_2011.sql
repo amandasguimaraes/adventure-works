@@ -9,7 +9,6 @@ with
         from {{ ref('int_sales__metrics') }}
         where order_date between '2011-01-01' and '2011-12-31'
     )
-
 select total
 from sales_2011
 where total not between 12646112.14 and 12646112.18

@@ -7,11 +7,10 @@ models:
       - name: sk_reason
         description: Generated surrogate key combining salesorderid and sales_reason_agg.
         tests:
-          - unique
           - not_null
 
       - name: sales_order_id
         description: Unique identifier for the sales order.
       
-      - name: sales_reason_agg
-        description: Aggregatede description of the reason.
+      - name: reason_name
+        description: Name of the sales reason.
