@@ -7,6 +7,7 @@ with
         select
             cast(salesreasonid as int) as sales_reason_id
             , cast(name as string) as reason_name
+            , cast(reasontype as string) as reason_type
         from source_sales_reason
     )
 

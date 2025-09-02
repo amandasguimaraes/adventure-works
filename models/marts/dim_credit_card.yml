@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: dim_credit_card
-    description: Dimension table contains information about credit cards.
+    description: Dimension table containing data about the customers credit card used in transactions.
     columns:
       - name: sk_credit_card
-        description: Generated surrogate key combining creditcardid and cardtype.
+        description: Surrogate key uniquely generated identifying each credit card record.
         tests: 
           - unique
           - not_null
@@ -17,6 +17,11 @@ models:
           - not_null
 
       - name: card_type
-        description: Type of the credit card.
+        description: Type of card used for purchase.
         tests: 
+          - not_null
+      
+      - name: card_number
+        description: A unique number for a credit card.
+        tests:
           - not_null

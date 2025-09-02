@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: dim_product
-    description: Dimension table contains information on products by AW.
+    description: Dimension table containing data about the products with their categories and subcategories.
     columns:
       - name: sk_product
-        description: Generated surrogate key combining productid and productnumber.
+        description: Surrogate key uniquely generated identifying each products record.
         tests: 
           - unique
           - not_null
@@ -17,10 +17,10 @@ models:
           - not_null
 
       - name: productsubcategory_id
-        description: Foreign key referencing the product subcategory.
+        description: Unique identifier for each product subcategory.
 
       - name: productcategory_id
-        description: Foreign key referencing the product category.
+        description: Unique identifier for each product category.
 
       - name: product_name
         description: Name of the product.
@@ -32,13 +32,13 @@ models:
         description: Name of the product subcategory.
 
       - name: product_number
-        description: Unique alphanumeric product identifier.
+        description: Unique alphanumeric identifier for the product.
         tests: 
           - unique
           - not_null
           
       - name: standard_cost
-        description: Standard cost associated with the product.
+        description: Cost to produce or procure the product.
 
       - name: list_price
-        description: List price of the product.
+        description: Suggested retail price of the product.

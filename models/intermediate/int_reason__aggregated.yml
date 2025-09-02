@@ -1,18 +1,18 @@
 models:
   - name: int_reason__enriched
-    description: Intermediate table to enriches sales reason for each sales order.
+    description: Intermediate table that aggregates sales reasons for each sales order.
     columns:
       - name: sales_order_id
-        description: Unique identifier for each sales order.
-        tests: 
-          - unique
-          - not_null
-      
-      - name: sales_reason_id
-        description: Unique identifier for each sales reason.
+        description: Primary key identifier for each sales order.
         tests: 
           - unique
           - not_null
 
       - name: reason_name
-        description: Name of the sales reason.
+        description: Name of the reason for the sales order.
+
+      - name: reason_type
+        description: Type of the reason for the sales order.
+      
+      - name: sales_reason_agg
+        description: Aggregated list of sales reasons for the order.

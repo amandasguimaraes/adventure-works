@@ -2,10 +2,12 @@ version: 2
 
 models:
   - name: dim_date
-    description: Dimension table generated using the dbt calendar macro.
+    description: Dimension table generated using the dbt calendar macro, providing time-based attributes for analysis.
     columns:
       - name: sk_date
-        description: Generated surrogate key based on the date_day and day_of_week_name columns.
-        tests: 
+        description: Surrogate key uniquely generated based on the date_day and day_of_week columns, serving as the primary key.
+        tests:
           - unique
           - not_null
+      
+        

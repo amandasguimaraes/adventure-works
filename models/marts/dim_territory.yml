@@ -2,42 +2,46 @@ version: 2
 
 models:
   - name: dim_territory
-    description: Dimension table contains information on territories..
+    description: Dimension table containing data about the territory, including addresses, provinces and countries.
     columns:
       - name: sk_territory
-        description: Generated surrogate key combining addressid, addressline1 and city.
+        description: Surrogate key uniquely generated identifying each territory record.
         tests: 
           - unique
           - not_null
+
       - name: address_id
-        description: Unique identifier for each address record.
+        description: Unique identifier for each address.
         tests: 
           - unique
           - not_null
 
       - name: state_province_id
-        description: Foreign key for the state/province. 
+        description: Unique identifier for each state/province. 
         
       - name: country_region_code
-        description: Foreign key for the country/region.
+        description: Unique identifier for each country/region.
 
       - name: territory_id
-        description: Foreign key for the territory.
+        description: Unique identifier for each territory.
 
       - name: address_line
-        description: First line of the address.
+        description: Full address, containing street name, number and other location details.
 
       - name: city
-        description: Name of the city.
+        description: Name of the city where the address is located.
+
+      - name: state_province_code
+        description: The standardized code that identifies a state or province.
       
       - name: province_name
-        description: Name of the state/province.
+        description: Name of the state/province where the address is located.
 
       - name: country_region_name
-        description: Name of the country/region.
+        description: Name of the country/region where the address is located.
       
       - name: territory_name
-        description: Name of the territory.
+        description: Name of the territory where the address is located.
 
       - name: continent
-        description: Name of the continent.
+        description: Name of the continent associated with the sales territory.

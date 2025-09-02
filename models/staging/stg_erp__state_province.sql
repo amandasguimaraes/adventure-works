@@ -5,11 +5,11 @@ with
     )
     , renamed as (
         select
-            cast(stateprovincecode as string) as state_province_code
-            , cast(name as string) as province_name
+            cast(stateprovinceid as int) as state_province_id
+            , cast(stateprovincecode as string) as state_province_code
             , cast(countryregioncode as string) as country_region_code
-            , cast(stateprovinceid as int) as state_province_id
             , cast(territoryid as int) as territory_id
+            , cast(name as string) as province_name
         from source_state_province
     )
 

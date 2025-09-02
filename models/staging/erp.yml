@@ -4,136 +4,137 @@ sources:
     schema: raw_adventure_works
     tables:
       - name: sales_salesorderheader
-        description: Sales order header information, including order and shipment dates, and foreign keys to customers, credit cards, addresses, and order details.
+        description: Information about sales orders in AW, including dates, status and customer details.
         columns:
           - name: salesorderid
-            description: Primary key of the SalesOrderHeader table.
+            description: Primary key uniquely identifying each sales order.
             tests:
               - unique
               - not_null
 
       - name: sales_salesorderdetail
-        description: Sales order line items, including product, quantity, unit price, discount, and related keys.
+        description: Details of sales orders in AW, including quantity, price and discounts.
         columns:
           - name: salesorderid
-            description: Foreign key linking to the SalesOrderHeader table.
+            description: Primary key uniquely identifying each sales order.
             tests:
               - not_null
 
       - name: sales_salesorderheadersalesreason
-        description: Bridge table between sales orders and sales reasons.
+        description: Information about the relationship between sales reasons and sales orders tables.
         columns:
           - name: salesorderid
-            description: Foreign key linking to the SalesOrderHeader table.
+            description: Primary key uniquely identifying each sales order.
             tests:
               - not_null
         
       - name: sales_salesreason
-        description: Reasons for a sale.
+        description: Information about customer's purchase reason.
         columns:
           - name: salesreasonid 
-            description: Primary key of the SalesReason table.
+            description: Primary key uniquely identifying each sales reason.
             tests:
               - not_null
               - unique
         
       - name: sales_creditcard
-        description: Credit card details including type, number, and expiration date.
+        description: Information about customer credit cards used for purchases, including type and card number.
         columns:
           - name: creditcardid
-            description: Primary key of the CreditCard table.
+            description: Primary key uniquely identifying each credit card.
             tests:
               - unique
               - not_null
         
       - name: production_product
-        description: Product details including attributes and identifiers.
+        description: Information on products sold by AW.
         columns:
           - name: productid
-            description: Primary key of the Product table.
+            description: Primary key uniquely identifying each product.
             tests:
               - unique
               - not_null
 
       - name: production_productcategory
-        description: High-level product categories.
+        description: Information about product categories sold by AW.
         columns:
           - name: productcategoryid
-            description: Primary key of the ProductCategory table.
+            description: Primary key uniquely identifying each product category.
             tests:
               - unique
               - not_null
       
       - name: production_productsubcategory
-        description: Subcategories of products, linked to categories.
+        description: Information about products subcategories sold by AW.
         columns:
           - name: productsubcategoryid
-            description: Primary key of the ProductSubcategory table.
+            description: Primary key uniquely identifying each product subcategory.
             tests:
               - unique
               - not_null
         
       - name: person_address
-        description: Sales addresses including street and city information.
+        description: Street address information for customers, employees and suppliers.
         columns:
           - name: addressid
-            description: Primary key of the Address table.
+            description: Primary key uniquely identifying each address.
             tests:
               - unique
               - not_null
         
       - name: person_stateprovince
-        description: States or provinces with their respective codes and country reference.
+        description: Geographic information at the state/province level, including territory and country region.
         columns:
           - name: stateprovinceid
-            description: Primary key of the StateProvince table.
+            description: Primary key uniquely identifying each state/province.
             tests:
               - unique
               - not_null
         
       - name: person_countryregion
-        description: Country names and codes.
+        description: Geographic information at the country/region level, including names and standard codes.
         columns:
           - name: countryregioncode
-            description: Primary key of the CountryRegion table.
+            description: Primary key uniquely identifying each country/region.
             tests:
               - unique
               - not_null
 
       - name: person_person
-        description: Person-level customer details including first and last name.
+        description: Information about individuals, including customers, employees and suppliers.
         columns:
           - name: businessentityid
-            description: Primary key of the Person table. Links to Customer via personid.
+            description: Primary key uniquely identifying each business entity.
             tests:
               - unique
               - not_null
         
       - name: sales_customer
-        description: Customer identifiers and references to person or store.
+        description: Information about AW customers, referencing either person or store entities.
         columns:
           - name: customerid
-            description: Primary key of the Customer table.
+            description: Primary key uniquely identifying each customer.
             tests:
               - unique
               - not_null
         
       - name: sales_store
-        description: Store-level customer details including store name.
+        description: Information about store-level customers, including business entities and store names.
         columns:
           - name: businessentityid
-            description: Primary key of the Store table. Links to Customer via storeid.
+            description: Primary key uniquely identifying each business entity.
             tests:
               - unique
               - not_null
       
-      - name: date
-        description: Model for order dates generated with dbt_date.
-
       - name: sales_salesterritory
-        description: Information about sales territories.
+        description: Information about AW sales territories.
         columns:
           - name: territoryid
+            description: Primary key uniquely identifying each sales territory.
             tests:
               - unique
               - not_null 
+      
+      - name: date
+        description: Table created using the dbt calendar macro and provides time-based attributes.
