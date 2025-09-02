@@ -20,3 +20,8 @@ models:
         description: Type of card used for purchase.
         tests: 
           - not_null
+      
+      - name: card_number
+        description: A unique number for a credit card.
+        tests:
+          - not_null

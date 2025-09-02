@@ -19,8 +19,10 @@ with
         , customer.person_id
         , customer.store_id
         , customer.territory_id
+        , person.business_entity_id as person_business_entity_id
         , person.person_type
         , person.full_name
+        , store.business_entity_id as store_business_entity_id
         , store.store_name
         , case 
             when customer.store_id is not null then 'Company'
@@ -34,8 +36,8 @@ with
             else 'Other'
         end as customer_type
     from customer
-    left join person on customer.person_id = person.person_id
-    left join store on customer.store_id = store.store_id
+    left join person on customer.person_id = person.business_entity_id
+    left join store on customer.store_id = store.business_entity_id
 )
     
 select *

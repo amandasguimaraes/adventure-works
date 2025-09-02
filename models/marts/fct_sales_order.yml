@@ -2,28 +2,58 @@ version: 2
 
 models:
   - name: fct_sales_order
-    description: Fact table contains detailed sales data and key metrics. 
+    description: Fact table containing detailed sales data at the line-item level, with key metrics and foreign keys to related dimensions.
     columns:
       - name: sk_sales_order
-        description: Surrogate key for the sales order, created by hashing the sales_order_id.
-
-      - name: sales_order_id
-        description: The unique identifier of the sales order (header level).
-
-      - name: sales_order_detail_id
-        description: The unique identifier of the sales order line (detail level).
-
-      - name: product_id
-        description: The unique identifier of the product sold.
-        
-      - name: customer_id
-        description: The unique identifier of the customer who placed the order.
-
-      - name: territory_id
-        description: The unique identifier of the sales territory where the order was placed.
-        
-      - name: credit_card_id
-        description: The unique identifier of the credit card used for the transaction.
+        description: The primary key for this fact table, created by hashing the sales_order_id and sales_order_detail_id to ensure a unique key for each line item.
+        tests:
+          - unique
+          - not_null
+      
+      - name: fk_date
+        description: A foreign key that links to the date dimension.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: sk_date
+      
+      - name: fk_credit_card
+        description: A foreign key that links to the credit card dimension.
+        tests:
+          - relationships:
+              to: ref('dim_credit_card')
+              field: sk_credit_card
+      
+      - name: fk_customer
+        description: A foreign key that links to the customer dimension.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: sk_customer
+      
+      - name: fk_territory
+        description: A foreign key that links to the territory dimension.
+        tests:
+          - relationships:
+              to: ref('dim_territory')
+              field: sk_territory
+      
+      - name: fk_product
+        description: A foreign key that links to the product dimension.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: sk_product
+      
+      - name: fk_reason
+        description: A foreign key that links to the sales reason dimension.
+        tests:
+          - relationships:
+              to: ref('dim_reason')
+              field: sk_reason
       
       - name: order_status
         description: Textual description of the order's status.
@@ -55,11 +85,14 @@ models:
       - name: sub_total
         description: The subtotal of the entire sales order before freight and tax.
 
-      - name: freight
-        description: The total freight cost for the order.
+      - name: prorated_freight
+        description: The portion of the total freight cost for the order.
       
-      - name: tax
-        description: The total tax amount for the order.
+      - name: prorated_tax
+        description: The portion of the total tax amount for the order.
+
+      - name: line_total
+        description: The final total for the line item, including net total, prorated freight, and prorated tax.
       
       - name: total_due
         description: The final amount due for the entire sales order (subtotal + freight + tax).

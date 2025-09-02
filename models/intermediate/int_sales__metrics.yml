@@ -1,6 +1,6 @@
 models:
   - name: int_sales__metrics
-    description: Intermediate table that enriches sales order data with detailed metrics and related dimensions.
+    description: Intermediate table that enriches sales order data with detailed metrics.
     columns:
       - name: sk_sales_order
         description: Surrogate key for the sales order, created by hashing the sales_order_id.
@@ -53,11 +53,14 @@ models:
       - name: sub_total
         description: The subtotal of the entire sales order before freight and tax.
 
-      - name: freight
-        description: The total freight cost for the order.
+      - name: prorated_freight
+        description: The portion of the total freight cost for the order.
       
-      - name: tax
-        description: The total tax amount for the order.
+      - name: prorated_tax
+        description: The portion of the total tax amount for the order.
+
+      - name: line_total
+        description: The final total for the line item, including net total, prorated freight, and prorated tax.
       
       - name: total_due
         description: The final amount due for the entire sales order (subtotal + freight + tax).

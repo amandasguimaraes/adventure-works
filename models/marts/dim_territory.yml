@@ -30,6 +30,9 @@ models:
 
       - name: city
         description: Name of the city where the address is located.
+
+      - name: state_province_code
+        description: The standardized code that identifies a state or province.
       
       - name: province_name
         description: Name of the state/province where the address is located.
